@@ -1,0 +1,28 @@
+{
+  "name": "autotweet-dc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.8.0",
+    "@discordjs/voice": "^0.11.0",
+    "discord.js": "^14.3.0",
+    "formdata-node": "^4.3.3",
+    "got": "^12.1.0",
+    "libsodium-wrappers": "^0.7.10",
+    "node-fetch": "^3.2.9",
+    "oauth": "^0.9.15",
+    "oauth-1.0a": "^2.2.6",
+    "opusscript": "^0.0.8",
+    "request": "^2.88.2",
+    "sodium-native": "^3.4.1",
+    "twitter-api-v2": "^1.12.3",
+    "yt-search": "^2.10.3",
+    "ytdl-core": "^4.11.2"
+  }
+}
