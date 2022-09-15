@@ -7,6 +7,8 @@ WORKDIR /app
 
 RUN npm install -g npm@8.19.2
 
+RUN npm install -g node-gyp
+
 RUN npm i @discordjs/voice
 
 RUN npm i discord.js
