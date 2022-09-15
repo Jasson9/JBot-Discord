@@ -7,7 +7,15 @@ WORKDIR /app
 
 RUN npm install -g npm@8.19.2
 
-RUN npm install
+RUN npm i @discordjs/voice
+
+RUN npm i discord.js
+
+RUN npm i @discordjs/rest
+
+RUN npm i yt-search
+
+RUN npm i ytdl-core
 
 EXPOSE 3000
 
