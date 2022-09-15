@@ -18,7 +18,7 @@ RUN apk add --update python make g++\
 
 RUN npm install -g node-gyp
 
-RUN npm i @discordjs/opus
+RUN npm install -g @discordjs/opus
 
 RUN npm i @discordjs/voice
 
