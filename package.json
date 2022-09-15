@@ -2,8 +2,9 @@
   "name": "autotweet-dc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Discord.js",
   "scripts": {
+    "start": "node Discord.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
