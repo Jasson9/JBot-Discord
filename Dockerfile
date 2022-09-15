@@ -7,6 +7,9 @@ WORKDIR /app
 
 RUN npm install -g npm@8.19.2
 
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
+
 RUN npm install -g node-gyp
 
 RUN npm i @discordjs/opus
