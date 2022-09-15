@@ -1,22 +1,17 @@
-FROM node:16
-ENV NODE_VERSION=16.13.0
-RUN apt install -y curl
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-RUN node --version
-RUN npm --version
-WORKDIR /usr/app
+# Common build stage
+FROM node:18-alpine3.15 as common-build-stage
 
-COPY package*.json ./
+COPY . ./app
+
+WORKDIR /app
 
 RUN npm install
 
-COPY . .
+EXPOSE 3000
 
-EXPOSE 8080
+FROM common-build-stage as production-build-stage
 
-CMD [“node”, “index.js”]
+ENV NODE_ENV production
+ENV PORT 3000
+
+CMD ["node", "index.js"]
