@@ -5,7 +5,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir nibabel pydicom matplotlib pillow med2image
 
 
-FROM node:18-alpine3.15 as common-build-stage
+FROM alpine:3.15 as common-build-stage
+
+ENV NODE_VERSION 16.17.0
 
 COPY . ./app
 
