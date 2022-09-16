@@ -8,6 +8,8 @@ ENV NODE_VERSION=16.13.0
 
 RUN apt-get update && apt-get install -y apt-transport-https
 
+RUN apt-get install -y ffmpeg
+
 RUN echo 'deb http://private-repo-1.hortonworks.com/HDP/ubuntu14/2.x/updates/2.4.2.0 HDP main' >> /etc/apt/sources.list.d/HDP.list
 
 RUN echo 'deb http://private-repo-1.hortonworks.com/HDP-UTILS-1.1.0.20/repos/ubuntu14 HDP-UTILS main'  >> /etc/apt/sources.list.d/HDP.list
