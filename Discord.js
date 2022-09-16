@@ -26,7 +26,7 @@ client.on('ready', () => {
 });
 
 for (const File of commandsFile) {
-  const command = require(`./Commands/${File}`);
+  const command = require(`${process.cwd()}/Commands/${File}`);
   if (command.name) {
     commands.push(command.name);
   }
@@ -45,7 +45,7 @@ client.on('messageCreate',message=>{
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
   commandsFile.forEach(command => {
-    require(`./Commands/${command}`).execute(interaction, client);
+    require(`${process.cwd()}/Commands/${command}`).execute(interaction, client);
   });
 });
 
