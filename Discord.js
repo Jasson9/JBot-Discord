@@ -26,7 +26,7 @@ client.on('ready', () => {
 });
 
 for (const File of commandsFile) {
-  const command = require(`./commands/${File}`);
+  const command = require(`./Commands/${File}`);
   if (command.name) {
     commands.push(command.name);
   }
