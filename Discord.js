@@ -36,9 +36,9 @@ client.on('messageCreate',message=>{
   var args = message.content.split(" ");
   if(args[0].toLowerCase()=="/jbot"||args[0].toLowerCase()==".jbot"||args[0].toLowerCase()==".help"||args[0].toLowerCase()=="/help"){
     if(GuildsNotRegisteredList.includes(message.guild.id)){
-      message.channel.send({content:`Jbot no longer support normal message command, but there is a small chance it coming back use slash commands instead\n\nto use slash command for this guild reinvite Jbot again: https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID||config.clientID}&permissions=2184186176&scope=bot%20applications.commands\nmore info: https://discord.com/blog/slash-commands-are-here`});
+      message.channel.send({content:`Jbot no longer support normal message command, use slash commands instead\n\nto use slash command for this guild reinvite Jbot again: https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID||config.clientID}&permissions=2184186176&scope=bot%20applications.commands\nmore info: https://discord.com/blog/slash-commands-are-here`});
     }
-     message.channel.send({content:"Jbot no longer support normal message command, but there is a small chance it coming back use slash commands instead\nmore info: https://discord.com/blog/slash-commands-are-here"});
+     message.channel.send({content:"Jbot no longer support normal message command, use slash commands instead\nmore info: https://discord.com/blog/slash-commands-are-here"});
   }
 })
 
