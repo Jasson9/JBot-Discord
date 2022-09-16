@@ -13,6 +13,8 @@ WORKDIR /app
 
 RUN npm install -g npm@8.19.2
 
+RUN npm install -g node-pre-gyp
+
 RUN npm install -g node-gyp
 
 RUN npm install -g @discordjs/opus
