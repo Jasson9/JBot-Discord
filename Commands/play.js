@@ -31,8 +31,6 @@ module.exports = {
                     return
                 }
                 if (!AudioPlayer.connection) AudioPlayer.join(interaction);
-                if (!volume) volume = config.def_volume;
-
                 if (!input && AudioPlayer.playlist[0]) {
                     AudioPlayer.resume();
                     await interaction.reply({content:"***Music resumed***"});
