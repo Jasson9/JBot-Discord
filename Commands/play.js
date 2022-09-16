@@ -26,7 +26,7 @@ module.exports = {
                 var channel = await client.channels.fetch(channelId);
 
                 //check for voice channel and join
-                if(!interaction.member.voice.channel.id){
+                if(interaction.member.voice.channel==null){
                     await interaction.reply({content:"Join a voice channel first"});
                     return
                 }
