@@ -37,19 +37,20 @@ module.exports = {
                 } else {
                     await interaction.deferReply();
                     //add to playlist
+                    console.log(AudioPlayer.audioplayer.state.status);
                     var song = await AudioPlayer.InputSong(input, channel, interaction.member.user.username, volume)
                         .catch(async err=>{
                             await interaction.reply({content:err});
                             return
                         });
-                    if (AudioPlayer.audioplayer.state.status == AudioPlayerStatus.Idle) {
+                    if (AudioPlayer.audioplayer.state.status == AudioPlayerStatus.Idle || AudioPlayer.audioplayer.state.status == AudioPlayerStatus.AutoPaused ) {
                         //play as first song
                         AudioPlayer.play();
                         await AudioPlayer.sendplayback({Interaction:interaction}).then(res=>{
                         });
                     }else{
                         //send reply for adding to playlist
-                        interaction.editReply({
+                        await interaction.editReply({
                             content:`***${song.title}*** - ${Math.floor(song.duration/60)}.${(song.duration%60).toLocaleString("en-US",{minimumIntegerDigits:2,useGrouping:false})} has been added to the playlist by ${song.username}`
                         })
                     }

@@ -15,7 +15,7 @@ module.exports = {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
                 await interaction.deferReply();
                 var number = interaction.options.getInteger("remove");
-
+                var message = [];
                 if (number > 0 && number != undefined) {
                     if (number == 1) {
                         await interaction.editReply({ content: "cannot remove currently played song, use skip instead" });
@@ -25,7 +25,6 @@ module.exports = {
                         await interaction.editReply({ content: `successfuly remove ${music.title}` })
                     }
                 }
-                var message = [];
                 for (var i = 0; i < AudioPlayer.playlist.length; i++) {
                     message.push(`${i + 1}. ${AudioPlayer.playlist[i].title} (${AudioPlayer.playlist[i].username})`);
                 }
