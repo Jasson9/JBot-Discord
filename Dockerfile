@@ -27,6 +27,8 @@ RUN npm i yt-search
 
 RUN npm i ytdl-core
 
+RUN npm install
+
 EXPOSE 3000
 
 FROM common-build-stage as production-build-stage
