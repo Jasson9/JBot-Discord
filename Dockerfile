@@ -17,8 +17,6 @@ RUN npm install -g node-pre-gyp
 
 RUN npm install -g node-gyp
 
-RUN npm install -g @discordjs/opus
-
 RUN npm i @discordjs/voice
 
 RUN npm i discord.js
