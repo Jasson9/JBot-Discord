@@ -1,5 +1,5 @@
 const config = require('../Config.json');
-const tweeter = require('../lib/twitter.js');
+const tweeter = require('../lib/Twitter.js');
 const { download } = require('../lib/DCDownloader.js');
 module.exports = {
     name: 'tweet',
