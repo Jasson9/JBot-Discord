@@ -5,7 +5,7 @@ module.exports = {
     async execute(interaction, client) {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
-                AudioPlayer.audioplayer.stop();
+                AudioPlayer.destroy();
                 await interaction.reply({content:"player stopped!"});
             }
         } catch (error) {
