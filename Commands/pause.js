@@ -1,5 +1,5 @@
 const AudioPlayer = require("../lib/AudioPlayer.js");
-
+const {AudioPlayerStatus} = require("@discordjs/voice");
 module.exports = {
     name: 'pause',
     type: 1,
@@ -16,8 +16,16 @@ module.exports = {
     async execute(interaction, client) {
         if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
             try {
-                AudioPlayer.pause();
-                await interaction.reply({ content: `***Music Paused*** by ${interaction.member.user.username}` })
+                if(AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.Paused||AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.AutoPaused){
+                    AudioPlayer.resume(interaction);
+                    await interaction.reply({ content: `***Music Resumed***`})
+                }else{
+                    if(AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.Buffering||AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.Playing){
+                        AudioPlayer.pause(interaction);
+                        await interaction.reply({ content: `***Music Paused***`})
+                    }
+                }
+
             } catch (error) {
                 console.log(error);
                 if(interaction.deferred||interaction.replied){

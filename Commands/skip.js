@@ -13,8 +13,8 @@ module.exports = {
     async execute(interaction, client) {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
-                var index = interaction.options.getInteger("tonumber");
-                AudioPlayer.skip(index);
+                var index = interaction.options?.getInteger("tonumber");
+                AudioPlayer.skip(interaction,index);
                 await interaction.reply({content:"skipped!"});
             }
         } catch (error) {

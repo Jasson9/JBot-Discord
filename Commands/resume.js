@@ -18,7 +18,7 @@ module.exports = {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
                 try {
                     var delay = interaction.options.getInteger("delay");
-                    AudioPlayer.resume(delay);
+                    AudioPlayer.resume(interaction,delay);
                     await interaction.reply({ content: "Music Resumed" })
                 } catch (error) {
                     console.log(error);

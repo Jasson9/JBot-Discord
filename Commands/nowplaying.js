@@ -4,8 +4,8 @@ module.exports={
     "description": `${info.description} (same command as /info)`,
     async execute(interaction,client){
         if(interaction.isChatInputCommand() && interaction.commandName === this.name){
-            info.execute(interaction,client);
+            interaction.commandName = "info";
+            await info.execute(interaction,client);
         }
-
     }
 }
