@@ -43,7 +43,8 @@ client.on("guildCreate", res => {
 client.on('messageCreate', message => {
   var args = new String(message.content).split(" ");
   if (args[0][0] == "." && args[0].length > 1){ 
-    if(commands.includes(args.shift().replace(".","").toLowerCase())){
+    var commandName = args.shift().replace(".","").toLowerCase();
+    if(commands.includes(commandName)){
       require(`${process.cwd()}/Commands/${commandName}`).execute(
         new MsgInteraction(message), client);
       }

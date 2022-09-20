@@ -28,6 +28,7 @@ module.exports = {
                         AudioPlayer.guilds[interaction.guildId].songs.splice(number - 1, 1);
                         await interaction.editReply({ content: `successfuly remove ${music.title}` })
                     }
+                    return
                 }
                 for (var i = 0; i < AudioPlayer.guilds[interaction.guildId].songs.length; i++) {
                     message.push(`${i + 1}. ${AudioPlayer.guilds[interaction.guildId].songs[i].title} (${AudioPlayer.guilds[interaction.guildId].songs[i].username})`);
