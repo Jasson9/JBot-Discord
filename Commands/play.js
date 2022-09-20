@@ -11,8 +11,10 @@ module.exports = {
         "description": "keyword or youtube watch or playlist url!",
         "type": 3
     }],
+    altdesc: "",
     async execute(interaction, client) {
         if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
+            //console.log(interaction)
             try {
                 var input = interaction.options.getString("keyword-or-link");
                 var volume = interaction.options.getInteger("volume");
@@ -24,7 +26,7 @@ module.exports = {
                     return
                 }
                 if (!AudioPlayer.connection) AudioPlayer.join(interaction);
-                if (!input && AudioPlayer.playlist[0]) {
+                if (!input && AudioPlayer.guilds[interaction.guildId][0]) {
                     AudioPlayer.resume(interaction);
                     await interaction.reply({content:"***Music resumed***"});
                 } else {
@@ -46,7 +48,7 @@ module.exports = {
                     }else{
                         //send reply for adding to playlist
                         await interaction.editReply({
-                            content:`***${song.title}*** - ${Math.floor(song.duration/60)}.${(song.duration%60).toLocaleString("en-US",{minimumIntegerDigits:2,useGrouping:false})} has been added to the playlist by ${song.username}\n total song in playlist: ${AudioPlayer.guilds[interaction.guildId].playlist.songs.length}`
+                            content:`***${song.title}*** - ${Math.floor(song.duration/60)}.${(song.duration%60).toLocaleString("en-US",{minimumIntegerDigits:2,useGrouping:false})} has been added to the playlist by ${song.username}\n total song in playlist: ${AudioPlayer.guilds[interaction.guildId].songs.length}`
                         })
                     }
                 }

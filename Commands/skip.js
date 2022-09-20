@@ -14,8 +14,12 @@ module.exports = {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
                 var index = interaction.options?.getInteger("tonumber");
-                AudioPlayer.skip(interaction,index);
-                await interaction.reply({content:"skipped!"});
+                var res = await AudioPlayer.skip(interaction,index);
+                if(res){
+                    await interaction.reply({content:res});
+                }else{
+                    await interaction.reply({content:"skipped!"});
+                }
             }
         } catch (error) {
             console.log(error);
