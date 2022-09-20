@@ -7,7 +7,7 @@ module.exports = {
         if(interaction.isChatInputCommand() && interaction.commandName === this.name){
             try {
                 await interaction.deferReply();
-                if(AudioPlayer.playlist[0]){
+                if(AudioPlayer.guilds[interaction.guildId]?.songs[0]){
                     await AudioPlayer.sendplayback({Interaction:interaction,withElapsed:true});
                 }else{
                     await interaction.editReply("No song currently playing")

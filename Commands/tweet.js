@@ -1,5 +1,5 @@
 const config = require('../Config.json');
-const tweeter = require('../lib/twitter.js');
+const tweeter = require('../lib/Twitter.js');
 const { download } = require('../lib/DCDownloader.js');
 module.exports = {
     name: 'tweet',
@@ -19,7 +19,7 @@ module.exports = {
     async execute(interaction, client) {
         
         if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
-            return await interaction.reply({content:"this command not available right now"});
+            return await interaction.reply({content:"this command not available for public bot"});
             if (config.NoConfirm) {//button implementation will be done later (NoConfirm == without confirmation button)
                 try {
                     var text = interaction.options.getString('text');

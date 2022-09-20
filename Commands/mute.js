@@ -1,24 +1,16 @@
-const AudioPlayer = require("../lib/AudioPlayer.js")
-
+var AudioPlayer = require("../lib/AudioPlayer");
 module.exports = {
-    name: 'skip',
-    type: 1,
-    description: 'skip current song',
-    options: [{
-        "name": "tonumber",
-        "required": false,
-        "description": "skip to specified number in playlist",
-        "type": 4
-    }],
+    name: 'mute',
+    description: 'Mute music player',
     async execute(interaction, client) {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
-                var index = interaction.options?.getInteger("tonumber");
-                var res = await AudioPlayer.skip(interaction,index);
-                if(res){
-                    await interaction.reply({content:res});
+                if(!AudioPlayer.guilds[interaction.guildId].muted){
+                    AudioPlayer.setvolume(AudioPlayer.guilds[interaction.guildId]?.volume,interaction,true);
+                    await interaction.reply("Music player muted")
                 }else{
-                    await interaction.reply({content:"skipped!"});
+                    AudioPlayer.setvolume(AudioPlayer.guilds[interaction.guildId]?.volume,interaction,false);
+                    await interaction.reply("Music player unmuted")
                 }
             }
         } catch (error) {
@@ -29,5 +21,6 @@ module.exports = {
                 await interaction.reply({ content: "An Error Occured", ephemeral: true });
             }
         }
+
     }
 }

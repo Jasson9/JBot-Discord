@@ -13,8 +13,8 @@ module.exports = {
     async execute(interaction, client){
         if(interaction.isChatInputCommand() && interaction.commandName === this.name){
             try {
-                var volume = interaction.options.getInteger("volume");
-                var resvolume = AudioPlayer.setvolume(volume);
+                var volume = interaction.options?.getInteger("volume");
+                var resvolume = AudioPlayer.setvolume(volume,interaction,false);
                 await interaction.reply(`Volume: ${resvolume}`)
             } catch (error) {
                 console.log(error);

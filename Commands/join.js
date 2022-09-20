@@ -1,12 +1,12 @@
-const AudioPlayer = require("../lib/AudioPlayer.js")
+const AudioPlayer = require("../lib/AudioPlayer.js");
 module.exports = {
-    name: 'stop',
-    description: 'stop music player',
+    name: 'join',
+    description: 'join channel',
     async execute(interaction, client) {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
-                AudioPlayer.destroy(interaction.guildId);
-                await interaction.reply({content:"player stopped!"});
+                AudioPlayer.join(interaction);
+                await interaction.reply({content:"voice channel joined"});
             }
         } catch (error) {
             console.log(error);
@@ -18,5 +18,4 @@ module.exports = {
         }
 
     }
-
 }
