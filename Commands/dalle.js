@@ -32,7 +32,7 @@ module.exports = {
                 }
                 var endtimer = Date.now();
                 await interaction.editReply({ content: `Done, Time Elapsed : ${(endtimer - starttimer) / 1000} seconds`, ephemeral: true });
-                await interaction.followUp({ content: `${text} \n\nby <@${interaction.user.id}>`, files: payload, ephemeral: false });
+                await interaction.followUp({ content: `${text} \n\nby <@${interaction.member.id}>`, files: payload, ephemeral: false });
             } catch (error) {
                 console.log(error);
                 if(interaction.deferred||interaction.replied){

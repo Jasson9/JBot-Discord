@@ -1,5 +1,5 @@
 const AudioPlayer = require("../lib/AudioPlayer.js");
-
+const config = require("../Config.json");
 module.exports = {
     name: 'volume',
     type: 1,
@@ -13,7 +13,7 @@ module.exports = {
     async execute(interaction, client){
         if(interaction.isChatInputCommand() && interaction.commandName === this.name){
             try {
-                var volume = interaction.options?.getInteger("volume");
+                var volume = interaction.options?.getInteger("volume") || AudioPlayer.guilds[interaction.guildId]?.volume || config.def_volume;
                 var resvolume = AudioPlayer.setvolume(volume,interaction,false);
                 await interaction.reply(`Volume: ${resvolume}`)
             } catch (error) {
