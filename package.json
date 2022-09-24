@@ -1,13 +1,13 @@
 {
-  "name": "autotweet-dc",
+  "name": "Jbot-Discord",
   "version": "1.0.0",
-  "description": "",
+  "description": "A discord bot with music player, using slash command and normal message with . as the prefix",
   "main": "Discord.js",
   "scripts": {
     "start": "node Discord.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jasson9",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
