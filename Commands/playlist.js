@@ -46,7 +46,7 @@ module.exports = {
             }
         } catch (error) {
             console.log(error);
-            await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+            await interaction.editReply({ content: "An Error Occured", ephemeral: false });
         }
     }
 }

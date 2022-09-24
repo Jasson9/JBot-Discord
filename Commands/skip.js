@@ -14,19 +14,18 @@ module.exports = {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
                 var index = interaction.options?.getInteger("tonumber");
+                AudioPlayer.guilds[interaction.guildId].songs[0].collector.stop();
                 var res = await AudioPlayer.skip(interaction,index);
                 if(res){
                     await interaction.reply({content:res});
-                }else{
-                    await interaction.reply({content:"skipped!"});
                 }
             }
         } catch (error) {
             console.log(error);
             if (interaction.deferred || interaction.replied) {
-                await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+                await interaction.editReply({ content: "An Error Occured", ephemeral: false });
             } else {
-                await interaction.reply({ content: "An Error Occured", ephemeral: true });
+                await interaction.reply({ content: "An Error Occured", ephemeral: false });
             }
         }
     }

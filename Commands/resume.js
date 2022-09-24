@@ -22,15 +22,15 @@ module.exports = {
                     await interaction.reply({ content: "Music Resumed" })
                 } catch (error) {
                     console.log(error);
-                    await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+                    await interaction.editReply({ content: "An Error Occured", ephemeral: false });
                 }
             }
         } catch (error) {
             console.log(error);
             if (interaction.deferred || interaction.replied) {
-                await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+                await interaction.editReply({ content: "An Error Occured", ephemeral: false });
             } else {
-                await interaction.reply({ content: "An Error Occured", ephemeral: true });
+                await interaction.reply({ content: "An Error Occured", ephemeral: false });
             }
         }
 

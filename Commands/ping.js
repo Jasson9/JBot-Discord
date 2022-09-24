@@ -13,9 +13,9 @@ module.exports = {
         } catch (error) {
             console.log(error);
             if (interaction.deferred || interaction.replied) {
-                await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+                await interaction.editReply({ content: "An Error Occured", ephemeral: false });
             } else {
-                await interaction.reply({ content: "An Error Occured", ephemeral: true });
+                await interaction.reply({ content: "An Error Occured", ephemeral: false });
             }
         }
 

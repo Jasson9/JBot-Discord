@@ -33,7 +33,7 @@ module.exports = {
                     await interaction.deferReply();
                     //add to playlist
                     //console.log(AudioPlayer.guilds[interaction.guildId].audioplayer.state.status);
-                    var song = await AudioPlayer.InputSong(input, channel, interaction.member.user.username)
+                    var song = await AudioPlayer.InputSong(input, channel, interaction.member.user.username, interaction)
                         .catch(async err=>{
                             console.log(err);
                             //await interaction.editReply({content:err});
@@ -47,14 +47,16 @@ module.exports = {
                         });
                     }else{
                         //send reply for adding to playlist
-                        await interaction.editReply({
-                            content:`***${song.title}*** - ${Math.floor(song.duration/60)}.${(song.duration%60).toLocaleString("en-US",{minimumIntegerDigits:2,useGrouping:false})} has been added to the playlist by ${song.username}\n total song in playlist: ${AudioPlayer.guilds[interaction.guildId].songs.length}`
-                        })
+                        if(song!=null){
+                            await interaction.editReply({
+                                content:`***${song.title}*** - ${Math.floor(song.duration/60)}.${(song.duration%60).toLocaleString("en-US",{minimumIntegerDigits:2,useGrouping:false})} has been added to the playlist by ${song.username}\n total song in playlist: ${AudioPlayer.guilds[interaction.guildId].songs.length}`
+                            })
+                        }
                     }
                 }
             } catch (error) {
                 console.log(error);
-                await interaction.editReply({ content: "An Error Occured", ephemeral: true });
+                await interaction.editReply({ content: "An Error Occured", ephemeral: false });
             }
         }
     }
