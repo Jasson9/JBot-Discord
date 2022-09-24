@@ -16,7 +16,7 @@ module.exports = {
     async execute(interaction, client) {
         if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
             try {
-                if(AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.Paused||AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.AutoPaused){
+                if(AudioPlayer.guilds[interaction.guildId]?.audioplayer?.state.status==AudioPlayerStatus.Paused){
                     AudioPlayer.resume(interaction);
                     await interaction.reply({ content: `***Music Resumed***`})
                 }else{

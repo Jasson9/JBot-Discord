@@ -1,6 +1,5 @@
 const AudioPlayer = require("../lib/AudioPlayer.js");
 const {AudioPlayerStatus , joinVoiceChannel} = require("@discordjs/voice");
-
 module.exports = {
     name: 'play',
     type: 1,
@@ -40,7 +39,7 @@ module.exports = {
                             return
                         });
                     if(!AudioPlayer.guilds[interaction.guildId].audioplayer)AudioPlayer.guilds[interaction.guildId].createAudioPlayer();
-                    if (AudioPlayer.guilds[interaction.guildId].audioplayer.state.status == AudioPlayerStatus.Idle || AudioPlayer.guilds[interaction.guildId].audioplayer.state.status == AudioPlayerStatus.AutoPaused ) {
+                    if (AudioPlayer.guilds[interaction.guildId].audioplayer.state.status == AudioPlayerStatus.Idle) {
                         //play as first song
                         AudioPlayer.play(interaction.guildId);
                         await AudioPlayer.sendplayback({Interaction:interaction}).then(res=>{
@@ -56,7 +55,11 @@ module.exports = {
                 }
             } catch (error) {
                 console.log(error);
-                await interaction.editReply({ content: "An Error Occured", ephemeral: false });
+                if (interaction.deferred || interaction.replied) {
+                    await interaction.editReply({ content: "An Error Occured", ephemeral: false });
+                } else {
+                    await interaction.reply({ content: "An Error Occured", ephemeral: false });
+                }
             }
         }
     }
