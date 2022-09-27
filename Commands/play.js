@@ -39,7 +39,7 @@ module.exports = {
                             return
                         });
                     if(!AudioPlayer.guilds[interaction.guildId].audioplayer)AudioPlayer.guilds[interaction.guildId].createAudioPlayer();
-                    if (AudioPlayer.guilds[interaction.guildId].audioplayer.state.status == AudioPlayerStatus.Idle) {
+                    if (AudioPlayer.guilds[interaction.guildId].songs?.length == 1) {
                         //play as first song
                         AudioPlayer.play(interaction.guildId);
                         await AudioPlayer.sendplayback({Interaction:interaction}).then(res=>{

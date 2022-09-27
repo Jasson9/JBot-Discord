@@ -14,7 +14,6 @@ module.exports = {
         try {
             if (interaction.isChatInputCommand() && interaction.commandName === this.name) {
                 var index = interaction.options?.getInteger("tonumber");
-                AudioPlayer.guilds[interaction.guildId].songs[0].collector.stop();
                 var res = await AudioPlayer.skip(interaction,index);
                 if(res){
                     await interaction.reply({content:res});
